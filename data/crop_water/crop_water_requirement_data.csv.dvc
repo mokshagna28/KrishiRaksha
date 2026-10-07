@@ -1,0 +1,5 @@
+outs:
+- md5: b96086220412f604d425e9b2bb193a83
+  size: 366251
+  hash: md5
+  path: crop_water_requirement_data.csv

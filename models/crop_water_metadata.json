@@ -1,0 +1,1251 @@
+{
+  "module": "crop_water_recovery_intelligence",
+  "version": "2.0.0",
+  "trained_at": "2026-10-02T11:29:32.084192",
+  "training_dataset_size": 3200,
+  "test_dataset_size": 800,
+  "dataset_source": "FAO-56 & ICAR Empirical Benchmark (data/crop_water/crop_water_requirement_data.csv)",
+  "regression": {
+    "champion_algorithm": "GradientBoostingRegressor",
+    "metrics": {
+      "algorithm": "GradientBoostingRegressor",
+      "mae": 0.2302,
+      "rmse": 0.4314,
+      "r2_score": 0.9945
+    },
+    "all_candidates": {
+      "LinearRegression": {
+        "algorithm": "LinearRegression",
+        "mae": 1.6205,
+        "rmse": 2.1151,
+        "r2_score": 0.8674
+      },
+      "RandomForestRegressor": {
+        "algorithm": "RandomForestRegressor",
+        "mae": 0.3113,
+        "rmse": 0.7134,
+        "r2_score": 0.9849
+      },
+      "GradientBoostingRegressor": {
+        "algorithm": "GradientBoostingRegressor",
+        "mae": 0.2302,
+        "rmse": 0.4314,
+        "r2_score": 0.9945
+      }
+    }
+  },
+  "classification": {
+    "champion_algorithm": "LogisticRegression",
+    "metrics": {
+      "algorithm": "LogisticRegression",
+      "accuracy": 0.9788,
+      "precision": 0.9787,
+      "recall": 0.9788,
+      "f1_score": 0.9787,
+      "confusion_matrix": [
+        [
+          365,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          91,
+          0,
+          10
+        ],
+        [
+          0,
+          0,
+          188,
+          0
+        ],
+        [
+          0,
+          7,
+          0,
+          139
+        ]
+      ],
+      "classes": [
+        "EXCESS WATER / WATERLOGGING RISK",
+        "HIGH WATER",
+        "LOW WATER / WATER STRESS",
+        "OPTIMAL WATER"
+      ]
+    },
+    "all_candidates": {
+      "LogisticRegression": {
+        "algorithm": "LogisticRegression",
+        "accuracy": 0.9788,
+        "precision": 0.9787,
+        "recall": 0.9788,
+        "f1_score": 0.9787,
+        "confusion_matrix": [
+          [
+            365,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            91,
+            0,
+            10
+          ],
+          [
+            0,
+            0,
+            188,
+            0
+          ],
+          [
+            0,
+            7,
+            0,
+            139
+          ]
+        ],
+        "classes": [
+          "EXCESS WATER / WATERLOGGING RISK",
+          "HIGH WATER",
+          "LOW WATER / WATER STRESS",
+          "OPTIMAL WATER"
+        ]
+      },
+      "RandomForestClassifier": {
+        "algorithm": "RandomForestClassifier",
+        "accuracy": 0.9775,
+        "precision": 0.9778,
+        "recall": 0.9775,
+        "f1_score": 0.9773,
+        "confusion_matrix": [
+          [
+            365,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            88,
+            0,
+            13
+          ],
+          [
+            0,
+            0,
+            188,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            141
+          ]
+        ],
+        "classes": [
+          "EXCESS WATER / WATERLOGGING RISK",
+          "HIGH WATER",
+          "LOW WATER / WATER STRESS",
+          "OPTIMAL WATER"
+        ]
+      },
+      "GradientBoostingClassifier": {
+        "algorithm": "GradientBoostingClassifier",
+        "accuracy": 0.975,
+        "precision": 0.9762,
+        "recall": 0.975,
+        "f1_score": 0.9751,
+        "confusion_matrix": [
+          [
+            365,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            96,
+            0,
+            5
+          ],
+          [
+            0,
+            0,
+            188,
+            0
+          ],
+          [
+            0,
+            15,
+            0,
+            131
+          ]
+        ],
+        "classes": [
+          "EXCESS WATER / WATERLOGGING RISK",
+          "HIGH WATER",
+          "LOW WATER / WATER STRESS",
+          "OPTIMAL WATER"
+        ]
+      }
+    }
+  },
+  "stress_classification": {
+    "algorithm": "GradientBoostingClassifier",
+    "f1_score": 0.9547
+  },
+  "disease_classification": {
+    "champion_algorithm": "RandomForestClassifier",
+    "metrics": {
+      "algorithm": "RandomForestClassifier",
+      "accuracy": 0.975,
+      "precision": 0.975,
+      "recall": 0.975,
+      "f1_score": 0.975,
+      "confusion_matrix": [
+        [
+          50,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          75,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          138,
+          0,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          16,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          122,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          10,
+          0,
+          0,
+          91,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          188,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          100
+        ]
+      ],
+      "classes": [
+        "Damping Off Fungal Infection",
+        "Fungal Sheath & Leaf Blight",
+        "Healthy (No Stress)",
+        "Nitrogen & Nutrient Leaching Stress",
+        "Pythium & Phytophthora Root Rot",
+        "Soil Aeration Stress (Mild Hypoxia)",
+        "Stomatal Closure & Wilting",
+        "Waterlogging & Oxygen Depletion (Hypoxia)"
+      ]
+    },
+    "all_candidates": {
+      "LogisticRegression": {
+        "algorithm": "LogisticRegression",
+        "accuracy": 0.93,
+        "precision": 0.9293,
+        "recall": 0.93,
+        "f1_score": 0.9291,
+        "confusion_matrix": [
+          [
+            47,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            61,
+            0,
+            5,
+            5,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            138,
+            0,
+            0,
+            7,
+            1,
+            0
+          ],
+          [
+            1,
+            7,
+            0,
+            9,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            5,
+            0,
+            0,
+            116,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            15,
+            0,
+            0,
+            85,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            188,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            100
+          ]
+        ],
+        "classes": [
+          "Damping Off Fungal Infection",
+          "Fungal Sheath & Leaf Blight",
+          "Healthy (No Stress)",
+          "Nitrogen & Nutrient Leaching Stress",
+          "Pythium & Phytophthora Root Rot",
+          "Soil Aeration Stress (Mild Hypoxia)",
+          "Stomatal Closure & Wilting",
+          "Waterlogging & Oxygen Depletion (Hypoxia)"
+        ]
+      },
+      "RandomForestClassifier": {
+        "algorithm": "RandomForestClassifier",
+        "accuracy": 0.975,
+        "precision": 0.975,
+        "recall": 0.975,
+        "f1_score": 0.975,
+        "confusion_matrix": [
+          [
+            50,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            75,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            138,
+            0,
+            0,
+            8,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            16,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            122,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            10,
+            0,
+            0,
+            91,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            188,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            100
+          ]
+        ],
+        "classes": [
+          "Damping Off Fungal Infection",
+          "Fungal Sheath & Leaf Blight",
+          "Healthy (No Stress)",
+          "Nitrogen & Nutrient Leaching Stress",
+          "Pythium & Phytophthora Root Rot",
+          "Soil Aeration Stress (Mild Hypoxia)",
+          "Stomatal Closure & Wilting",
+          "Waterlogging & Oxygen Depletion (Hypoxia)"
+        ]
+      },
+      "GradientBoostingClassifier": {
+        "algorithm": "GradientBoostingClassifier",
+        "accuracy": 0.9725,
+        "precision": 0.9734,
+        "recall": 0.9725,
+        "f1_score": 0.9726,
+        "confusion_matrix": [
+          [
+            50,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            75,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            131,
+            0,
+            0,
+            15,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            17,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            123,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            7,
+            0,
+            0,
+            94,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            188,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            100
+          ]
+        ],
+        "classes": [
+          "Damping Off Fungal Infection",
+          "Fungal Sheath & Leaf Blight",
+          "Healthy (No Stress)",
+          "Nitrogen & Nutrient Leaching Stress",
+          "Pythium & Phytophthora Root Rot",
+          "Soil Aeration Stress (Mild Hypoxia)",
+          "Stomatal Closure & Wilting",
+          "Waterlogging & Oxygen Depletion (Hypoxia)"
+        ]
+      }
+    }
+  },
+  "treatment_classification": {
+    "champion_algorithm": "RandomForestClassifier",
+    "metrics": {
+      "algorithm": "RandomForestClassifier",
+      "accuracy": 0.975,
+      "precision": 0.975,
+      "recall": 0.975,
+      "f1_score": 0.975,
+      "confusion_matrix": [
+        [
+          122,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          75,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          16,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          100,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          138,
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          188,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          91,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          50
+        ]
+      ],
+      "classes": [
+        "Carbendazim 50% WP + Metalaxyl-Mancozeb Drenching",
+        "Copper Oxychloride 50% WP + Hexaconazole Spray",
+        "Drainage Channel Clearing + Foliar Urea (1-2%) Spray",
+        "Field Trench Drainage + Potassium Nitrate Foliar Spray (1%)",
+        "No Chemical Treatment Needed (Maintain Normal Irrigation)",
+        "Supplemental Precision Irrigation + Anti-transpirant Spray",
+        "Surface Field Drainage + Soil Aeration Ridge Formation",
+        "Trichoderma Viride Bio-Fungicide Soil Application"
+      ]
+    },
+    "all_candidates": {
+      "LogisticRegression": {
+        "algorithm": "LogisticRegression",
+        "accuracy": 0.93,
+        "precision": 0.9293,
+        "recall": 0.93,
+        "f1_score": 0.9291,
+        "confusion_matrix": [
+          [
+            116,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2
+          ],
+          [
+            5,
+            61,
+            5,
+            1,
+            0,
+            0,
+            0,
+            3
+          ],
+          [
+            0,
+            7,
+            9,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            100,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            138,
+            1,
+            7,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            188,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            15,
+            0,
+            85,
+            0
+          ],
+          [
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            47
+          ]
+        ],
+        "classes": [
+          "Carbendazim 50% WP + Metalaxyl-Mancozeb Drenching",
+          "Copper Oxychloride 50% WP + Hexaconazole Spray",
+          "Drainage Channel Clearing + Foliar Urea (1-2%) Spray",
+          "Field Trench Drainage + Potassium Nitrate Foliar Spray (1%)",
+          "No Chemical Treatment Needed (Maintain Normal Irrigation)",
+          "Supplemental Precision Irrigation + Anti-transpirant Spray",
+          "Surface Field Drainage + Soil Aeration Ridge Formation",
+          "Trichoderma Viride Bio-Fungicide Soil Application"
+        ]
+      },
+      "RandomForestClassifier": {
+        "algorithm": "RandomForestClassifier",
+        "accuracy": 0.975,
+        "precision": 0.975,
+        "recall": 0.975,
+        "f1_score": 0.975,
+        "confusion_matrix": [
+          [
+            122,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            75,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            16,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            100,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            138,
+            0,
+            8,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            188,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            10,
+            0,
+            91,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            50
+          ]
+        ],
+        "classes": [
+          "Carbendazim 50% WP + Metalaxyl-Mancozeb Drenching",
+          "Copper Oxychloride 50% WP + Hexaconazole Spray",
+          "Drainage Channel Clearing + Foliar Urea (1-2%) Spray",
+          "Field Trench Drainage + Potassium Nitrate Foliar Spray (1%)",
+          "No Chemical Treatment Needed (Maintain Normal Irrigation)",
+          "Supplemental Precision Irrigation + Anti-transpirant Spray",
+          "Surface Field Drainage + Soil Aeration Ridge Formation",
+          "Trichoderma Viride Bio-Fungicide Soil Application"
+        ]
+      },
+      "GradientBoostingClassifier": {
+        "algorithm": "GradientBoostingClassifier",
+        "accuracy": 0.9725,
+        "precision": 0.9734,
+        "recall": 0.9725,
+        "f1_score": 0.9726,
+        "confusion_matrix": [
+          [
+            123,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            75,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            17,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            100,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            131,
+            0,
+            15,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            188,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            7,
+            0,
+            94,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            50
+          ]
+        ],
+        "classes": [
+          "Carbendazim 50% WP + Metalaxyl-Mancozeb Drenching",
+          "Copper Oxychloride 50% WP + Hexaconazole Spray",
+          "Drainage Channel Clearing + Foliar Urea (1-2%) Spray",
+          "Field Trench Drainage + Potassium Nitrate Foliar Spray (1%)",
+          "No Chemical Treatment Needed (Maintain Normal Irrigation)",
+          "Supplemental Precision Irrigation + Anti-transpirant Spray",
+          "Surface Field Drainage + Soil Aeration Ridge Formation",
+          "Trichoderma Viride Bio-Fungicide Soil Application"
+        ]
+      }
+    }
+  },
+  "recovery_classification": {
+    "champion_algorithm": "GradientBoostingClassifier",
+    "metrics": {
+      "algorithm": "GradientBoostingClassifier",
+      "accuracy": 0.9738,
+      "precision": 0.9725,
+      "recall": 0.9738,
+      "f1_score": 0.9726,
+      "confusion_matrix": [
+        [
+          247,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          96,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          401,
+          6
+        ],
+        [
+          0,
+          0,
+          15,
+          35
+        ]
+      ],
+      "classes": [
+        "Full Recovery (90-100%)",
+        "Low Recovery / Severe Loss (<50%)",
+        "Partial Recovery (50-69%)",
+        "Substantial Recovery (70-89%)"
+      ]
+    },
+    "all_candidates": {
+      "LogisticRegression": {
+        "algorithm": "LogisticRegression",
+        "accuracy": 0.8888,
+        "precision": 0.8887,
+        "recall": 0.8888,
+        "f1_score": 0.8714,
+        "confusion_matrix": [
+          [
+            223,
+            0,
+            24,
+            0
+          ],
+          [
+            0,
+            96,
+            0,
+            0
+          ],
+          [
+            21,
+            0,
+            385,
+            1
+          ],
+          [
+            14,
+            0,
+            29,
+            7
+          ]
+        ],
+        "classes": [
+          "Full Recovery (90-100%)",
+          "Low Recovery / Severe Loss (<50%)",
+          "Partial Recovery (50-69%)",
+          "Substantial Recovery (70-89%)"
+        ]
+      },
+      "RandomForestClassifier": {
+        "algorithm": "RandomForestClassifier",
+        "accuracy": 0.9587,
+        "precision": 0.9595,
+        "recall": 0.9587,
+        "f1_score": 0.9502,
+        "confusion_matrix": [
+          [
+            247,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            96,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            406,
+            1
+          ],
+          [
+            0,
+            0,
+            32,
+            18
+          ]
+        ],
+        "classes": [
+          "Full Recovery (90-100%)",
+          "Low Recovery / Severe Loss (<50%)",
+          "Partial Recovery (50-69%)",
+          "Substantial Recovery (70-89%)"
+        ]
+      },
+      "GradientBoostingClassifier": {
+        "algorithm": "GradientBoostingClassifier",
+        "accuracy": 0.9738,
+        "precision": 0.9725,
+        "recall": 0.9738,
+        "f1_score": 0.9726,
+        "confusion_matrix": [
+          [
+            247,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            96,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            401,
+            6
+          ],
+          [
+            0,
+            0,
+            15,
+            35
+          ]
+        ],
+        "classes": [
+          "Full Recovery (90-100%)",
+          "Low Recovery / Severe Loss (<50%)",
+          "Partial Recovery (50-69%)",
+          "Substantial Recovery (70-89%)"
+        ]
+      }
+    }
+  },
+  "treatment_metadata": {
+    "Supplemental Precision Irrigation + Anti-transpirant Spray": {
+      "treatment_category": "Irrigation & Moisture Retention",
+      "active_ingredient": "Potassium Nitrate (1%) + Kaolin Spray",
+      "application_info": "Apply 30-50 mm irrigation during early morning hours; spray 1% KNO3 to reduce wilting."
+    },
+    "Trichoderma Viride Bio-Fungicide Soil Application": {
+      "treatment_category": "Biological Fungicide",
+      "active_ingredient": "Trichoderma Viride (1x10^8 CFU/g)",
+      "application_info": "Apply 5 kg/ha bio-agent mixed with 100 kg FYM near root zones to suppress damping-off pathogen."
+    },
+    "No Chemical Treatment Needed (Maintain Normal Irrigation)": {
+      "treatment_category": "Standard Care",
+      "active_ingredient": "N/A",
+      "application_info": "Continue balanced crop monitoring and standard field management."
+    },
+    "Carbendazim 50% WP + Metalaxyl-Mancozeb Drenching": {
+      "treatment_category": "Fungicide (Systemic)",
+      "active_ingredient": "Metalaxyl 8% + Mancozeb 64% WP",
+      "application_info": "Drench root zone with 2 g/L solution of Metalaxyl + Mancozeb; ensure field drainage."
+    },
+    "Field Trench Drainage + Potassium Nitrate Foliar Spray (1%)": {
+      "treatment_category": "Drainage & Nutrient Rescue",
+      "active_ingredient": "Potassium Nitrate (13-0-45)",
+      "application_info": "Excavate 30cm deep drainage ditches; apply 1% KNO3 foliar spray to boost root respiration."
+    },
+    "Copper Oxychloride 50% WP + Hexaconazole Spray": {
+      "treatment_category": "Fungicide (Broad Spectrum)",
+      "active_ingredient": "Copper Oxychloride 50% WP",
+      "application_info": "Foliar spray at 2.5 g/L water; repeat after 7-10 days if high atmospheric humidity persists."
+    },
+    "Surface Field Drainage + Soil Aeration Ridge Formation": {
+      "treatment_category": "Cultural & Agronomic Drainage",
+      "active_ingredient": "None (Cultural Control)",
+      "application_info": "Open periphery field furrows to drain standing surface water within 24 hours."
+    },
+    "Drainage Channel Clearing + Foliar Urea (1-2%) Spray": {
+      "treatment_category": "Nutrient Rescue & Drainage",
+      "active_ingredient": "Urea (46% N) Foliar Grade",
+      "application_info": "Spray 1.5% Urea solution (15 g/L water) on foliage after draining excess water to correct nitrogen chlorosis."
+    }
+  },
+  "feature_importance": {
+    "forecast_rainfall": 0.266,
+    "soil_moisture": 0.2342,
+    "recent_rainfall": 0.2256,
+    "humidity": 0.1474,
+    "temperature": 0.0657,
+    "wind_speed": 0.028,
+    "soil_type_Sandy": 0.0066,
+    "growth_stage_Flowering": 0.0036,
+    "soil_type_Clay": 0.0027,
+    "soil_type_Black Cotton Soil": 0.0026,
+    "growth_stage_Harvesting": 0.0021,
+    "soil_type_Loam": 0.002,
+    "growth_stage_Vegetative": 0.0018,
+    "crop_Pulses": 0.0016,
+    "crop_Tomato": 0.0015,
+    "crop_Rice": 0.0015,
+    "crop_Sugarcane": 0.0015,
+    "crop_Maize": 0.0015,
+    "growth_stage_Sowing": 0.0015,
+    "crop_Wheat": 0.0013,
+    "crop_Cotton": 0.0013
+  },
+  "supported_crops": [
+    "Cotton",
+    "Maize",
+    "Pulses",
+    "Rice",
+    "Sugarcane",
+    "Tomato",
+    "Wheat"
+  ],
+  "supported_stages": [
+    "Flowering",
+    "Harvesting",
+    "Sowing",
+    "Vegetative"
+  ],
+  "supported_soils": [
+    "Black Cotton Soil",
+    "Clay",
+    "Loam",
+    "Sandy"
+  ]
+}

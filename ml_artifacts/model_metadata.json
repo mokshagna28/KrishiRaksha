@@ -1,0 +1,191 @@
+{
+  "model_name": "HeavyRainRiskModel_231FA04291",
+  "version": "v20261002_1006",
+  "algorithm": "GradientBoosting",
+  "features_version": "v2.1",
+  "trained_at": "2026-10-02T10:06:24.406318+00:00",
+  "student_roll_number": "231FA04291",
+  "training_dataset_size": 21900,
+  "test_dataset_size": 5475,
+  "training_period": "2021-01-01 to 2023-12-31 (3 Years IMD Gridded Reanalysis)",
+  "data_source": "IMD Open Data Portal / National Data Centre Pune (Verified Normals)",
+  "metrics": {
+    "accuracy": 0.9991,
+    "precision": 0.9946,
+    "recall": 0.992,
+    "f1_score": 0.9933,
+    "roc_auc": 0.9999,
+    "confusion_matrix": [
+      [
+        5100,
+        2
+      ],
+      [
+        3,
+        370
+      ]
+    ],
+    "feature_importance": {
+      "rainfall_lag1": 0.0002,
+      "rainfall_lag2": 0.0002,
+      "rainfall_lag3": 0.0002,
+      "rainfall_sum_3d": 0.0001,
+      "rainfall_sum_7d": 0.0009,
+      "temperature": 0.0016,
+      "humidity": 0.0072,
+      "wind_speed": 0.9741,
+      "dew_point_depression": 0.0086,
+      "thi_index": 0.0049,
+      "month_sin": 0.0001,
+      "month_cos": 0.0008,
+      "rain_trend_3d": 0.001
+    },
+    "train_size": 21900,
+    "test_size": 5475,
+    "algorithm": "GradientBoosting"
+  },
+  "all_candidate_metrics": {
+    "LogisticRegression": {
+      "accuracy": 0.9962,
+      "precision": 0.949,
+      "recall": 0.9973,
+      "f1_score": 0.9725,
+      "roc_auc": 0.9999,
+      "confusion_matrix": [
+        [
+          5082,
+          20
+        ],
+        [
+          1,
+          372
+        ]
+      ],
+      "feature_importance": {
+        "rainfall_lag1": 0.0005,
+        "rainfall_lag2": 0.0005,
+        "rainfall_lag3": 0.0002,
+        "rainfall_sum_3d": 0.0002,
+        "rainfall_sum_7d": 0.0,
+        "temperature": 0.1404,
+        "humidity": 0.0272,
+        "wind_speed": 0.356,
+        "dew_point_depression": 0.3235,
+        "thi_index": 0.1217,
+        "month_sin": 0.0132,
+        "month_cos": 0.0163,
+        "rain_trend_3d": 0.0003
+      },
+      "train_size": 21900,
+      "test_size": 5475,
+      "algorithm": "LogisticRegression"
+    },
+    "RandomForest": {
+      "accuracy": 0.998,
+      "precision": 0.9788,
+      "recall": 0.992,
+      "f1_score": 0.9854,
+      "roc_auc": 1.0,
+      "confusion_matrix": [
+        [
+          5094,
+          8
+        ],
+        [
+          3,
+          370
+        ]
+      ],
+      "feature_importance": {
+        "rainfall_lag1": 0.0006,
+        "rainfall_lag2": 0.0002,
+        "rainfall_lag3": 0.0003,
+        "rainfall_sum_3d": 0.0054,
+        "rainfall_sum_7d": 0.0248,
+        "temperature": 0.0992,
+        "humidity": 0.2449,
+        "wind_speed": 0.4362,
+        "dew_point_depression": 0.1516,
+        "thi_index": 0.0304,
+        "month_sin": 0.0018,
+        "month_cos": 0.0039,
+        "rain_trend_3d": 0.0007
+      },
+      "train_size": 21900,
+      "test_size": 5475,
+      "algorithm": "RandomForest"
+    },
+    "GradientBoosting": {
+      "accuracy": 0.9991,
+      "precision": 0.9946,
+      "recall": 0.992,
+      "f1_score": 0.9933,
+      "roc_auc": 0.9999,
+      "confusion_matrix": [
+        [
+          5100,
+          2
+        ],
+        [
+          3,
+          370
+        ]
+      ],
+      "feature_importance": {
+        "rainfall_lag1": 0.0002,
+        "rainfall_lag2": 0.0002,
+        "rainfall_lag3": 0.0002,
+        "rainfall_sum_3d": 0.0001,
+        "rainfall_sum_7d": 0.0009,
+        "temperature": 0.0016,
+        "humidity": 0.0072,
+        "wind_speed": 0.9741,
+        "dew_point_depression": 0.0086,
+        "thi_index": 0.0049,
+        "month_sin": 0.0001,
+        "month_cos": 0.0008,
+        "rain_trend_3d": 0.001
+      },
+      "train_size": 21900,
+      "test_size": 5475,
+      "algorithm": "GradientBoosting"
+    },
+    "XGBoost": {
+      "accuracy": 0.9984,
+      "precision": 0.984,
+      "recall": 0.992,
+      "f1_score": 0.988,
+      "roc_auc": 0.9999,
+      "confusion_matrix": [
+        [
+          5096,
+          6
+        ],
+        [
+          3,
+          370
+        ]
+      ],
+      "feature_importance": {
+        "rainfall_lag1": 0.0047,
+        "rainfall_lag2": 0.0016,
+        "rainfall_lag3": 0.0004,
+        "rainfall_sum_3d": 0.0014,
+        "rainfall_sum_7d": 0.0016,
+        "temperature": 0.0079,
+        "humidity": 0.0355,
+        "wind_speed": 0.9379,
+        "dew_point_depression": 0.0012,
+        "thi_index": 0.0025,
+        "month_sin": 0.0017,
+        "month_cos": 0.0009,
+        "rain_trend_3d": 0.0027
+      },
+      "train_size": 21900,
+      "test_size": 5475,
+      "algorithm": "XGBoost"
+    }
+  },
+  "target_definition": "heavy_rain_risk (IMD Classification: Daily Rainfall >= 64.5 mm)",
+  "distinction_note": "ML model predicts Heavy Rainfall Risk based on atmospheric moisture and antecedent rainfall. Flood/Waterlogging risk is assessed in the Risk Engine by synthesizing ML risk, official IMD district warnings, and cumulative 7-day soil saturation."
+}

@@ -1,0 +1,5 @@
+outs:
+- md5: 04ea7d58d95b492d6a70cb742cac2a13
+  size: 1356091
+  hash: md5
+  path: historical_rainfall_samples.csv

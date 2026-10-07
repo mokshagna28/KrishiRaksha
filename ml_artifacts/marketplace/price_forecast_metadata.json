@@ -1,0 +1,57 @@
+{
+  "version": "mp-v202610021210",
+  "trained_at": "2026-10-02T12:10:12.838251",
+  "champion_algorithm": "GradientBoosting",
+  "champion_metrics": {
+    "mae": 17.6694,
+    "rmse": 30.1943,
+    "r2_score": 0.9998,
+    "mape_pct": 1.5062
+  },
+  "all_candidate_metrics": {
+    "RandomForest": {
+      "mae": 19.8413,
+      "rmse": 35.4483,
+      "r2_score": 0.9997,
+      "mape_pct": 1.6803
+    },
+    "GradientBoosting": {
+      "mae": 17.6694,
+      "rmse": 30.1943,
+      "r2_score": 0.9998,
+      "mape_pct": 1.5062
+    }
+  },
+  "feature_importance": {},
+  "training_dataset_size": 14347,
+  "test_dataset_size": 3587,
+  "training_period": "2025-10-02 00:00:00 to 2026-07-21 00:00:00",
+  "test_period": "2026-07-21 00:00:00 to 2026-10-02 00:00:00",
+  "data_source": "AGMARKNET / eNAM Synthetic Historical Market Price Dataset",
+  "target_variable": "modal_price (Rs/quintal)",
+  "price_unit": "Rs/quintal",
+  "supported_crops": [
+    "Cotton",
+    "Maize",
+    "Pulses",
+    "Rice",
+    "Sugarcane",
+    "Tomato",
+    "Wheat"
+  ],
+  "supported_markets": [
+    "Azadpur Mandi",
+    "Bathinda Mandi",
+    "Guntur Mandi",
+    "Khanna Mandi",
+    "Kurnool Mandi",
+    "Vashi APMC",
+    "Warangal Mandi"
+  ],
+  "price_range": {
+    "min": 12.89,
+    "max": 7352.25,
+    "mean": 2666.73
+  },
+  "scientific_note": "Prices are ML predictions based on historical patterns. They are NOT guaranteed market outcomes and should be used for decision support only. Actual prices depend on many real-world factors."
+}
