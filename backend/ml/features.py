@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Machine Learning Feature Engineering
-Student Roll Number: 231FA04291
 
 Engineers physically and meteorologically meaningful features for heavy rainfall risk prediction:
 - Rolling antecedent rainfall sums (3-day, 7-day)

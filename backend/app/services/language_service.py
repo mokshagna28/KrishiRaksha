@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Multi-Language Service & DLT SMS Templates
-Student Roll Number: 231FA04291
 
 Supports 11 Indian Languages:
 English, Hindi, Telugu, Tamil, Kannada, Malayalam, Marathi, Bengali, Odia, Gujarati, Punjabi

@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - India Meteorological Department (IMD) Weather Service
-Student Roll Number: 231FA04291
 
 Integrates official IMD endpoints with resilient retry, timeout, audit hashes,
 last-known-good caching, and data freshness metrics.

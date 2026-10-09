@@ -1,6 +1,6 @@
 // API Client for KRISHIRAKSHA AI
 
-export const API_BASE = '';
+export const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 
 export async function fetchSystemStatus() {
   const res = await fetch(`${API_BASE}/api/system/status`);
@@ -122,6 +122,12 @@ export async function refreshWeather() {
 export async function runPredictions() {
   const res = await fetch(`${API_BASE}/api/predictions/run`, { method: 'POST' });
   if (!res.ok) throw new Error('Failed to run predictions');
+  return res.json();
+}
+
+export async function fetchLatestPredictions() {
+  const res = await fetch(`${API_BASE}/api/predictions/latest`);
+  if (!res.ok) throw new Error('Failed to fetch latest predictions');
   return res.json();
 }
 

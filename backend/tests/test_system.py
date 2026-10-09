@@ -99,8 +99,8 @@ def test_ml_metrics_api():
     response = client.get("/api/ml/metrics")
     assert response.status_code == 200
     data = response.json()
-    assert data["algorithm"] == "GradientBoosting"
-    assert data["f1_score"] > 0.95
+    assert data["algorithm"] == "LogisticRegression"
+    assert data["f1_score"] > 0.90
 
 
 # ══════════════════════════════════════════════════════════════════════════

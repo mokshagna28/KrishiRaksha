@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - FastAPI Application
-Student Roll Number: 231FA04291
 AI-Based Heavy Rainfall & Flood Risk Early Warning System for Indian Farmers
 """
 

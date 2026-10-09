@@ -1,60 +1,61 @@
 {
-  "model_name": "HeavyRainRiskModel_231FA04291",
-  "version": "v20261002_1006",
-  "algorithm": "GradientBoosting",
+  "model_name": "HeavyRainRiskModel",
+  "version": "v20261009_1835",
+  "algorithm": "LogisticRegression",
+  "model_type": "Logistic Regression (Basic Classification Pipeline with StandardScaler)",
+  "champion_status": "Current Initial Champion Model (Phase 1)",
   "features_version": "v2.1",
-  "trained_at": "2026-10-02T10:06:24.406318+00:00",
-  "student_roll_number": "231FA04291",
+  "trained_at": "2026-10-09T18:35:38.339886+00:00",
   "training_dataset_size": 21900,
   "test_dataset_size": 5475,
   "training_period": "2021-01-01 to 2023-12-31 (3 Years IMD Gridded Reanalysis)",
   "data_source": "IMD Open Data Portal / National Data Centre Pune (Verified Normals)",
   "metrics": {
-    "accuracy": 0.9991,
-    "precision": 0.9946,
-    "recall": 0.992,
-    "f1_score": 0.9933,
+    "accuracy": 0.9942,
+    "precision": 0.9231,
+    "recall": 0.9973,
+    "f1_score": 0.9588,
     "roc_auc": 0.9999,
     "confusion_matrix": [
       [
-        5100,
-        2
+        5071,
+        31
       ],
       [
-        3,
-        370
+        1,
+        372
       ]
     ],
     "feature_importance": {
-      "rainfall_lag1": 0.0002,
-      "rainfall_lag2": 0.0002,
-      "rainfall_lag3": 0.0002,
-      "rainfall_sum_3d": 0.0001,
-      "rainfall_sum_7d": 0.0009,
-      "temperature": 0.0016,
-      "humidity": 0.0072,
-      "wind_speed": 0.9741,
-      "dew_point_depression": 0.0086,
-      "thi_index": 0.0049,
-      "month_sin": 0.0001,
-      "month_cos": 0.0008,
-      "rain_trend_3d": 0.001
+      "rainfall_lag1": 0.0075,
+      "rainfall_lag2": 0.0025,
+      "rainfall_lag3": 0.0008,
+      "rainfall_sum_3d": 0.0029,
+      "rainfall_sum_7d": 0.0025,
+      "temperature": 0.0412,
+      "humidity": 0.0899,
+      "wind_speed": 0.6967,
+      "dew_point_depression": 0.0899,
+      "thi_index": 0.0375,
+      "month_sin": 0.0154,
+      "month_cos": 0.0082,
+      "rain_trend_3d": 0.0051
     },
     "train_size": 21900,
     "test_size": 5475,
-    "algorithm": "GradientBoosting"
+    "algorithm": "LogisticRegression"
   },
   "all_candidate_metrics": {
     "LogisticRegression": {
-      "accuracy": 0.9962,
-      "precision": 0.949,
+      "accuracy": 0.9942,
+      "precision": 0.9231,
       "recall": 0.9973,
-      "f1_score": 0.9725,
+      "f1_score": 0.9588,
       "roc_auc": 0.9999,
       "confusion_matrix": [
         [
-          5082,
-          20
+          5071,
+          31
         ],
         [
           1,
@@ -62,19 +63,19 @@
         ]
       ],
       "feature_importance": {
-        "rainfall_lag1": 0.0005,
-        "rainfall_lag2": 0.0005,
-        "rainfall_lag3": 0.0002,
-        "rainfall_sum_3d": 0.0002,
-        "rainfall_sum_7d": 0.0,
-        "temperature": 0.1404,
-        "humidity": 0.0272,
-        "wind_speed": 0.356,
-        "dew_point_depression": 0.3235,
-        "thi_index": 0.1217,
-        "month_sin": 0.0132,
-        "month_cos": 0.0163,
-        "rain_trend_3d": 0.0003
+        "rainfall_lag1": 0.0075,
+        "rainfall_lag2": 0.0025,
+        "rainfall_lag3": 0.0008,
+        "rainfall_sum_3d": 0.0029,
+        "rainfall_sum_7d": 0.0025,
+        "temperature": 0.0412,
+        "humidity": 0.0899,
+        "wind_speed": 0.6967,
+        "dew_point_depression": 0.0899,
+        "thi_index": 0.0375,
+        "month_sin": 0.0154,
+        "month_cos": 0.0082,
+        "rain_trend_3d": 0.0051
       },
       "train_size": 21900,
       "test_size": 5475,
@@ -186,6 +187,12 @@
       "algorithm": "XGBoost"
     }
   },
+  "academic_progression": {
+    "phase_1": "Logistic Regression (Initial Champion)",
+    "phase_2": "Random Forest (Future Improvement Candidate)",
+    "phase_3": "Model Comparison & Benchmarking",
+    "phase_4": "Selection of Champion Model"
+  },
   "target_definition": "heavy_rain_risk (IMD Classification: Daily Rainfall >= 64.5 mm)",
-  "distinction_note": "ML model predicts Heavy Rainfall Risk based on atmospheric moisture and antecedent rainfall. Flood/Waterlogging risk is assessed in the Risk Engine by synthesizing ML risk, official IMD district warnings, and cumulative 7-day soil saturation."
+  "distinction_note": "Logistic Regression is used as the initial baseline classification model. It transforms features using StandardScaler and predicts heavy rainfall risk probability. Flood/Waterlogging risk is assessed in the Risk Engine by synthesizing ML risk, official IMD district warnings, and cumulative 7-day soil saturation."
 }

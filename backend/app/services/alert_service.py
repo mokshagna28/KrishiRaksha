@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Alert Generation, Targeting, & Duplicate Protection Service
-Student Roll Number: 231FA04291
 
 Handles:
 - District-specific geo-fencing (never broadcasts district alerts across all India)

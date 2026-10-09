@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-              AI-Based Heavy Rainfall & Flood Risk Early Warning System &bull; <strong style={{ color: '#38bdf8' }}>Roll No: 231FA04291</strong>
+              AI-Based Heavy Rainfall & Flood Risk Early Warning System for Indian Farmers
             </p>
           </div>
         </div>

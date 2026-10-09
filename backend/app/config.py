@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Configuration Management
-Student Roll Number: 231FA04291
 """
 
 from typing import List, Optional
@@ -11,18 +10,18 @@ class Settings(BaseSettings):
     # Core Application Info
     PROJECT_NAME: str = "KRISHIRAKSHA AI"
     PROJECT_TITLE: str = "AI-Based Heavy Rainfall & Flood Risk Early Warning System for Indian Farmers"
-    STUDENT_ROLL_NUMBER: str = "231FA04291"
+    STUDENT_ROLL_NUMBER: str = ""
     ENVIRONMENT: str = "development"
     DEBUG: bool = True
     PORT: int = 8000
     HOST: str = "0.0.0.0"
 
     # Security & JWT Auth
-    SECRET_KEY: str = "krishiraksha-super-secret-key-231fa04291-btech-final-project-secure-token"
+    SECRET_KEY: str = "krishiraksha-super-secret-key-btech-final-project-secure-token"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
     ADMIN_DEFAULT_USERNAME: str = "admin"
-    ADMIN_DEFAULT_PASSWORD: str = "AdminPassword@231FA"
+    ADMIN_DEFAULT_PASSWORD: str = "AdminPassword@Secure"
     ADMIN_DEFAULT_EMAIL: str = "admin@krishiraksha.in"
 
     # Database Configuration
@@ -39,9 +38,9 @@ class Settings(BaseSettings):
 
     # Machine Learning & MLOps
     MLFLOW_TRACKING_URI: str = "sqlite:///./mlruns.db"
-    MLFLOW_EXPERIMENT_NAME: str = "Rainfall_Flood_Risk_MLOps_231FA04291"
-    MODEL_REGISTRY_NAME: str = "HeavyRainRiskModel_231FA04291"
-    ML_MODEL_TYPE: str = "RandomForest"
+    MLFLOW_EXPERIMENT_NAME: str = "Rainfall_Flood_Risk_MLOps"
+    MODEL_REGISTRY_NAME: str = "HeavyRainRiskModel"
+    ML_MODEL_TYPE: str = "LogisticRegression"
     MODEL_ARTIFACTS_DIR: str = "ml_artifacts"
 
     # SMS Gateway (MSG91) Configuration

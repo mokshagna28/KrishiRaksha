@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Pydantic Request & Response Schemas
-Student Roll Number: 231FA04291
 """
 
 from typing import List, Optional, Dict, Any

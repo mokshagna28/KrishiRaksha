@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - ML Model Evaluation
-Student Roll Number: 231FA04291
 
 Computes rigorous scientific metrics on held-out test splits:
 Accuracy, Precision, Recall, F1-Score, ROC-AUC, and Confusion Matrix.
@@ -17,6 +16,7 @@ from sklearn.metrics import (
 def evaluate_model_performance(model: Any, X_test: np.ndarray, y_test: np.ndarray, feature_names: List[str]) -> Dict[str, Any]:
     """
     Evaluates classifier on test dataset and computes full metrics suite.
+    Handles standard scikit-learn models as well as Pipeline objects.
     """
     y_pred = model.predict(X_test)
     y_prob = model.predict_proba(X_test)[:, 1] if hasattr(model, "predict_proba") else y_pred.astype(float)
@@ -33,14 +33,17 @@ def evaluate_model_performance(model: Any, X_test: np.ndarray, y_test: np.ndarra
 
     cm = confusion_matrix(y_test, y_pred).tolist()
 
-    # Extract feature importances if model supports it
+    # Extract underlying classifier if model is a scikit-learn Pipeline
+    clf_obj = model.named_steps["classifier"] if hasattr(model, "named_steps") and "classifier" in model.named_steps else model
+
+    # Extract feature importances or model coefficients
     feat_imp = {}
-    if hasattr(model, "feature_importances_"):
-        raw_imp = model.feature_importances_
+    if hasattr(clf_obj, "feature_importances_"):
+        raw_imp = clf_obj.feature_importances_
         for name, val in zip(feature_names, raw_imp):
             feat_imp[name] = round(float(val), 4)
-    elif hasattr(model, "coef_"):
-        raw_imp = np.abs(model.coef_[0])
+    elif hasattr(clf_obj, "coef_"):
+        raw_imp = np.abs(clf_obj.coef_[0])
         total = np.sum(raw_imp) or 1.0
         normalized = raw_imp / total
         for name, val in zip(feature_names, normalized):
@@ -55,3 +58,4 @@ def evaluate_model_performance(model: Any, X_test: np.ndarray, y_test: np.ndarra
         "confusion_matrix": cm,
         "feature_importance": feat_imp
     }
+

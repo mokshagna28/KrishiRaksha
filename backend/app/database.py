@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Database Engine & Session Factory
-Student Roll Number: 231FA04291
 Supports PostgreSQL with seamless SQLite development fallback.
 """
 

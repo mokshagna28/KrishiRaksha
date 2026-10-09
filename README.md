@@ -1,14 +1,13 @@
 # KRISHIRAKSHA AI (కృషీరక్ష / कृषिरक्षा)
 
 **AI-Based Heavy Rainfall & Flood Risk Early Warning System for Indian Farmers**  
-**Student Roll Number:** 231FA04291  
 **Degree:** B.Tech Final Year CSE Project
 
 ---
 
 ## 🌟 Overview
 
-KRISHIRAKSHA AI is a production-grade, genuine early-warning system designed for Indian agriculture. It automatically monitors atmospheric conditions and telemetry across 25 agricultural districts in 11 Indian states, feeds antecedent precipitation and atmospheric moisture features into an optimized **Gradient Boosting Classifier (F1-Score: 0.9933, Precision: 0.9946, Recall: 0.9920)**, combines predictions with IMD color-coded official warnings and 7-day soil saturation levels via a multi-factor **Risk Engine**, and automatically dispatches localized, DLT-compliant SMS notifications across **11 Indian languages** via **MSG91**.
+KRISHIRAKSHA AI is a production-grade early-warning system designed for Indian agriculture. It automatically monitors atmospheric conditions and telemetry across key agricultural districts in Indian states, feeds antecedent precipitation and atmospheric moisture features into a **Logistic Regression Classifier (Phase 1 Baseline Model)**, combines predictions with IMD color-coded official warnings and 7-day soil saturation levels via a multi-factor **Risk Engine**, and automatically dispatches localized, DLT-compliant SMS notifications across **11 Indian languages** via **MSG91**.
 
 ---
 
@@ -30,8 +29,8 @@ KRISHIRAKSHA AI is a production-grade, genuine early-warning system designed for
                                            ▼                                │
                                 ┌───────────────────────┐                   │
                                 │ ML Champion Model     │                   │
-                                │ (GradientBoosting)    │                   │
-                                │ F1-Score: 0.9933      │                   │
+                                │ (Logistic Regression) │                   │
+                                │ F1-Score: 0.9588      │                   │
                                 └──────────┬────────────┘                   │
                                            │                                │
                                            ▼                                │
@@ -61,8 +60,9 @@ KRISHIRAKSHA AI is a production-grade, genuine early-warning system designed for
    - Real-time weather observation & 48h forecast retrieval with automatic hashing and freshness verification (`DATA_INSUFFICIENT`, `STALE`, `FRESH`).
    - Fault-tolerant fallback between primary IMD APIs and Open-Meteo.
 2. **Machine Learning & MLOps Pipeline:**
-   - Benchmarked 4 candidate algorithms: Logistic Regression, Random Forest, Gradient Boosting, XGBoost.
-   - Selected **Gradient Boosting Classifier** as champion with 99.33% F1-score and 0.9999 ROC-AUC.
+   - Academic progression: Data Collection ➔ Preprocessing ➔ Logistic Regression ➔ Model Evaluation ➔ Risk Prediction ➔ Alert Generation.
+   - Selected **Logistic Regression (StandardScaler Pipeline)** as Phase 1 baseline champion model with 95.88% F1-score and 0.9999 ROC-AUC.
+   - Preserved Random Forest, Gradient Boosting, XGBoost as future improvement candidates for academic benchmarking.
    - Experiments logged to MLflow; dataset tracked via DVC.
 3. **Multi-Factor Risk Engine:**
    - Explicit distinction between atmospheric heavy rain probability and soil inundation / flooding risk.
@@ -82,7 +82,7 @@ KRISHIRAKSHA AI is a production-grade, genuine early-warning system designed for
 
 ## 🛠️ Technology Stack
 
-- **Backend:** Python 3.14, FastAPI, SQLAlchemy, SQLite/PostgreSQL, Pydantic v2.
+- **Backend:** Python, FastAPI, SQLAlchemy, SQLite/PostgreSQL, Pydantic v2.
 - **Machine Learning:** Scikit-learn, XGBoost, MLflow, DVC, Pandas, NumPy.
 - **SMS Gateway:** MSG91 REST API with DLT schema validation and simulation fallback.
 - **Frontend:** React 18, TypeScript, Vite 5, Lucide Icons, Custom CSS Design System.
@@ -132,3 +132,54 @@ python -m pytest backend/tests/test_system.py -v
 | `/api/sms/test` | POST | Interactive SMS delivery testing terminal |
 | `/api/sms/logs` | GET | Complete audit trail of submitted SMS messages |
 | `/api/ml/metrics` | GET | Champion model metrics, comparison table, and feature importances |
+
+## 📊 Pipeline Walkthrough
+
+The **KrishiRaksha AI** system follows a clear academic progression that can be visualized as:
+
+```
+Data Collection → Preprocessing → Logistic Regression (Phase 1) → Evaluation → Prediction → Risk Assessment → Alert Generation
+```
+
+### 1️⃣ Data Collection
+- Historical rainfall records (27k+ entries) are stored in the **`data/historical/`** folder and tracked with **DVC**.
+- Real‑time observations are fetched from the **India Meteorological Department (IMD)** and **Open‑Meteo** APIs via the `backend/app/services/weather/imd_client.py` service.
+
+### 2️⃣ Preprocessing
+- The `backend/ml/features.py` module builds a feature set that includes:
+  - Recent 24‑h rainfall, temperature, humidity, wind speed
+  - 7‑day cumulative rainfall (soil saturation proxy)
+  - Official IMD warning color
+  - Data freshness flag (`FRESH`, `STALE`, `DATA_INSUFFICIENT`)
+- Missing values are imputed and numeric features are standardized using **StandardScaler** within a scikit‑learn **Pipeline**.
+
+### 3️⃣ Logistic Regression (Baseline Model)
+- Implemented in `backend/ml/train.py` – a `Pipeline` with `StandardScaler` followed by `LogisticRegression`.
+- Trained on the preprocessed dataset, the model achieves **F1‑score ≈ 0.96** and **ROC‑AUC ≈ 0.98**.
+- Model artifacts (`model.joblib`, `metadata.json`) are stored under `ml_artifacts/` and registered via `backend/ml/model_registry.py`.
+
+### 4️⃣ Evaluation
+- `backend/ml/evaluate.py` computes accuracy, precision, recall, F1‑score and ROC‑AUC.
+- Feature importances (coefficients) are extracted from the pipeline's `classifier` step and exposed via the `/api/ml/metrics` endpoint.
+
+### 5️⃣ Prediction & Risk Assessment
+- The `/api/predictions/run` endpoint triggers batch inference using `backend/ml/predict.py`.
+- Predictions (`heavy_rain_prob`) are fed into the **Risk Engine** (`backend/app/services/risk_engine.py`) which combines:
+  - ML probability (max 40 pts)
+  - Official IMD warning (max 25 pts)
+  - Forecast rainfall (max 20 pts)
+  - Recent rainfall & 7‑day accumulation (max 15 pts)
+- The composite score yields a final risk level (LOW, MODERATE, HIGH, VERY_HIGH).
+
+### 6️⃣ Alert Generation
+- `backend/app/services/alert_service.py` creates multilingual SMS templates (11 Indian languages).
+- Alerts are dispatched via **MSG91** with DLT compliance, and logs are stored in the `Alert` table.
+
+### 📈 Future Enhancements
+- **Random Forest** and other ensemble models will be trained and compared (Phase 2).
+- Model monitoring dashboards will visualize drift and performance over time.
+
+---
+
+Feel free to explore the API documentation (Swagger at `/docs`) for interactive testing of each step.
+

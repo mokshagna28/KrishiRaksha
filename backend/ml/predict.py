@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Heavy Rainfall Risk Inference Service
-Student Roll Number: 231FA04291
 
 Checks data freshness, applies feature extraction, and runs inference.
 Never predicts on insufficient or invalid data.

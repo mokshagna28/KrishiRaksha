@@ -1,15 +1,11 @@
 """
 KRISHIRAKSHA AI - Machine Learning Training & MLOps Pipeline
-Student Roll Number: 231FA04291
 
-Compares:
-1. Logistic Regression
-2. Random Forest Classifier
-3. Gradient Boosting Classifier
-4. XGBoost Classifier
+Phase 1 Champion Model: Logistic Regression (Basic / Initial ML Model)
+Future Improvements (Phase 2): Random Forest Classifier, Gradient Boosting, XGBoost
 
-Tracks all runs, metrics, and parameters in MLflow experiment:
-'Rainfall_Flood_Risk_MLOps_231FA04291'
+Tracks runs, metrics, and parameters in MLflow experiment:
+'Rainfall_Flood_Risk_MLOps'
 """
 
 import os
@@ -20,6 +16,8 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timezone
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 import xgboost as xgb
@@ -46,7 +44,8 @@ def train_and_evaluate_all_models(
 ):
     """
     Executes full ML training pipeline on historical meteorological observations.
-    Logs each model candidate to MLflow and persists the champion model.
+    Trains Logistic Regression as the initial Champion Model (bundled with StandardScaler in a sklearn Pipeline),
+    and benchmarks candidate models (Random Forest, Gradient Boosting, XGBoost) for academic comparison.
     """
     logger.info(f"Loading historical dataset from {csv_path}...")
     if not os.path.exists(csv_path):
@@ -76,11 +75,14 @@ def train_and_evaluate_all_models(
     mlflow.set_experiment(settings.MLFLOW_EXPERIMENT_NAME)
 
     candidate_models = {
-        "LogisticRegression": LogisticRegression(
-            max_iter=1000,
-            class_weight="balanced",
-            random_state=42
-        ),
+        "LogisticRegression": Pipeline([
+            ("scaler", StandardScaler()),
+            ("classifier", LogisticRegression(
+                max_iter=1000,
+                class_weight="balanced",
+                random_state=42
+            ))
+        ]),
         "RandomForest": RandomForestClassifier(
             n_estimators=100,
             max_depth=12,
@@ -106,10 +108,6 @@ def train_and_evaluate_all_models(
     }
 
     results = {}
-    best_model_name = None
-    best_f1 = -1.0
-    best_eval_metrics = None
-    best_model_instance = None
 
     for name, clf in candidate_models.items():
         logger.info(f"Training candidate algorithm: {name}...")
@@ -130,7 +128,6 @@ def train_and_evaluate_all_models(
             # Log to MLflow
             mlflow.log_params({
                 "algorithm": name,
-                "student_roll_number": settings.STUDENT_ROLL_NUMBER,
                 "features_version": FEATURES_VERSION,
                 "target": "heavy_rain_risk_gte_64_5mm",
                 "train_samples": len(X_train),
@@ -152,38 +149,43 @@ def train_and_evaluate_all_models(
                     serialization_format="cloudpickle"
                 )
             except Exception as log_ex:
-                logger.warning(f"Could not log full model artifact to mlflow (skipping flavor serialization): {log_ex}")
+                logger.warning(f"Could not log full model artifact to mlflow: {log_ex}")
 
-            # Check champion
-            if eval_metrics["f1_score"] > best_f1:
-                best_f1 = eval_metrics["f1_score"]
-                best_model_name = name
-                best_eval_metrics = eval_metrics
-                best_model_instance = clf
+    # Primary requirement: Logistic Regression is the INITIAL CHAMPION MODEL for Phase 1
+    champion_algorithm = "LogisticRegression"
+    champion_model_instance = candidate_models[champion_algorithm]
+    champion_eval_metrics = results[champion_algorithm]
 
     # Save champion model directly via joblib
     champion_path = os.path.join(artifacts_dir, "champion_model.joblib")
     metadata_path = os.path.join(artifacts_dir, "model_metadata.json")
 
-    joblib.dump(best_model_instance, champion_path)
-    logger.info(f"Champion model selected: {best_model_name} (F1: {best_f1:.4f}). Saved to {champion_path}")
+    joblib.dump(champion_model_instance, champion_path)
+    logger.info(f"Champion model saved: {champion_algorithm} (F1: {champion_eval_metrics['f1_score']:.4f}). Saved to {champion_path}")
 
     model_version_str = f"v{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M')}"
     metadata = {
         "model_name": settings.MODEL_REGISTRY_NAME,
         "version": model_version_str,
-        "algorithm": best_model_name,
+        "algorithm": champion_algorithm,
+        "model_type": "Logistic Regression (Basic Classification Pipeline with StandardScaler)",
+        "champion_status": "Current Initial Champion Model (Phase 1)",
         "features_version": FEATURES_VERSION,
         "trained_at": datetime.now(timezone.utc).isoformat(),
-        "student_roll_number": settings.STUDENT_ROLL_NUMBER,
         "training_dataset_size": len(X_train),
         "test_dataset_size": len(X_test),
         "training_period": "2021-01-01 to 2023-12-31 (3 Years IMD Gridded Reanalysis)",
         "data_source": "IMD Open Data Portal / National Data Centre Pune (Verified Normals)",
-        "metrics": best_eval_metrics,
+        "metrics": champion_eval_metrics,
         "all_candidate_metrics": results,
+        "academic_progression": {
+            "phase_1": "Logistic Regression (Initial Champion)",
+            "phase_2": "Random Forest (Future Improvement Candidate)",
+            "phase_3": "Model Comparison & Benchmarking",
+            "phase_4": "Selection of Champion Model"
+        },
         "target_definition": "heavy_rain_risk (IMD Classification: Daily Rainfall >= 64.5 mm)",
-        "distinction_note": "ML model predicts Heavy Rainfall Risk based on atmospheric moisture and antecedent rainfall. Flood/Waterlogging risk is assessed in the Risk Engine by synthesizing ML risk, official IMD district warnings, and cumulative 7-day soil saturation."
+        "distinction_note": "Logistic Regression is used as the initial baseline classification model. It transforms features using StandardScaler and predicts heavy rainfall risk probability. Flood/Waterlogging risk is assessed in the Risk Engine by synthesizing ML risk, official IMD district warnings, and cumulative 7-day soil saturation."
     }
 
     with open(metadata_path, "w", encoding="utf-8") as f:
@@ -197,12 +199,12 @@ def train_and_evaluate_all_models(
         mv = ModelVersion(
             model_name=settings.MODEL_REGISTRY_NAME,
             version=model_version_str,
-            algorithm=best_model_name,
-            accuracy=best_eval_metrics["accuracy"],
-            precision=best_eval_metrics["precision"],
-            recall=best_eval_metrics["recall"],
-            f1_score=best_eval_metrics["f1_score"],
-            roc_auc=best_eval_metrics["roc_auc"],
+            algorithm=champion_algorithm,
+            accuracy=champion_eval_metrics["accuracy"],
+            precision=champion_eval_metrics["precision"],
+            recall=champion_eval_metrics["recall"],
+            f1_score=champion_eval_metrics["f1_score"],
+            roc_auc=champion_eval_metrics["roc_auc"],
             trained_at=datetime.utcnow(),
             artifact_path=champion_path,
             is_active=True
@@ -218,3 +220,4 @@ def train_and_evaluate_all_models(
 
 if __name__ == "__main__":
     train_and_evaluate_all_models()
+

@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Security, Hashing, & JWT Token Management
-Student Roll Number: 231FA04291
 """
 
 from datetime import datetime, timedelta

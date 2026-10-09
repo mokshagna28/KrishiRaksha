@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: krishiraksha-ai
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SMS_MODE
+        value: demo
+      - key: SECRET_KEY
+        generateValue: true

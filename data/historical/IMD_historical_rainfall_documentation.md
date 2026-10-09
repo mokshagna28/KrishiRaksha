@@ -1,7 +1,6 @@
 # IMD Historical Rainfall Dataset Documentation
 
 **Project:** KRISHIRAKSHA AI  
-**Student Roll Number:** 231FA04291  
 **Target Variable:** `heavy_rain_risk` (Binary: 0 = Normal/Light/Moderate, 1 = Heavy/Extreme)
 
 ---

@@ -12,10 +12,11 @@ import { SmsHubTab } from './components/SmsHubTab';
 import { MLStudioTab } from './components/MLStudioTab';
 import { CropWaterTab } from './components/CropWaterTab';
 import { MarketplaceTab } from './components/MarketplaceTab';
-import { LayoutDashboard, Users, Bell, MessageSquare, Cpu, Droplets, ShoppingCart } from 'lucide-react';
+import { OutputDashboard } from './components/OutputDashboard';
+import { LayoutDashboard, Users, Bell, MessageSquare, Cpu, Droplets, ShoppingCart, Eye } from 'lucide-react';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'farmers' | 'alerts' | 'sms' | 'ml' | 'cropwater' | 'marketplace'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'farmers' | 'alerts' | 'sms' | 'ml' | 'output' | 'cropwater' | 'marketplace'>('dashboard');
 
   // App Data States
   const [systemStatus, setSystemStatus] = useState<any>(null);
@@ -163,7 +164,15 @@ export function App() {
           style={{ borderRadius: '8px 8px 0 0', borderBottom: 'none', padding: '10px 18px', background: activeTab === 'ml' ? undefined : 'transparent' }}
           onClick={() => setActiveTab('ml')}
         >
-          <Cpu size={16} /> AI / ML Studio (F1: 0.993)
+          <Cpu size={16} /> AI / ML Studio
+        </button>
+
+        <button
+          className={`btn ${activeTab === 'output' ? 'btn-primary' : 'btn-secondary'}`}
+          style={{ borderRadius: '8px 8px 0 0', borderBottom: 'none', padding: '10px 18px', background: activeTab === 'output' ? undefined : 'transparent' }}
+          onClick={() => setActiveTab('output')}
+        >
+          <Eye size={16} /> Output Dashboard
         </button>
 
         <button
@@ -227,6 +236,10 @@ export function App() {
           />
         )}
 
+        {activeTab === 'output' && (
+          <OutputDashboard />
+        )}
+
         {activeTab === 'cropwater' && (
           <CropWaterTab />
         )}
@@ -245,7 +258,7 @@ export function App() {
         color: 'var(--text-dim)',
         background: 'rgba(15, 23, 42, 0.8)',
       }}>
-        KRISHIRAKSHA AI &bull; B.Tech Final Year CSE Project &bull; Roll Number: <strong>231FA04291</strong> &bull; Heavy Rainfall & Flood Risk Early Warning System for Indian Farmers
+        KRISHIRAKSHA AI &bull; B.Tech Final Year CSE Project &bull; Heavy Rainfall & Flood Risk Early Warning System for Indian Farmers
       </footer>
     </div>
   );

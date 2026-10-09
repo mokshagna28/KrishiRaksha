@@ -1,7 +1,6 @@
 @echo off
 echo =========================================================================
 echo KRISHIRAKSHA AI - Heavy Rainfall & Flood Risk Early Warning System
-echo Student Roll Number: 231FA04291
 echo =========================================================================
 echo.
 echo [1/2] Checking database and ML champion model...

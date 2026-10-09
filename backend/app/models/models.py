@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Database Models Schema
-Student Roll Number: 231FA04291
 Fully relational architecture with indexes, constraints, and audit trails.
 """
 

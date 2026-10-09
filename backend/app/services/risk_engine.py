@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Risk Assessment & Explainability Engine
-Student Roll Number: 231FA04291
 
 Synthesizes:
 1. Machine Learning Heavy Rain Probability

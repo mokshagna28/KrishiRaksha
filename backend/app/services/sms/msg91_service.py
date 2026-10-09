@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - MSG91 Indian SMS Gateway Service
-Student Roll Number: 231FA04291
 
 Strictly complies with Indian Telecom DLT (Distributed Ledger Technology) requirements.
 Supports live MSG91 API submission and demo simulation for evaluation.

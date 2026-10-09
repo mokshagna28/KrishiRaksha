@@ -1,6 +1,5 @@
 """
 KRISHIRAKSHA AI - Model Registry & Metadata Loader
-Student Roll Number: 231FA04291
 """
 
 import os
